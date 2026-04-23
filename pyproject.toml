@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vipe-server-dashboard"
+version = "1.0.0"
+description = "Terminal Server Dashboard - Ubuntu Server Management Tool"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Your Name", email = "your@email.com"}
+]
+keywords = ["server", "dashboard", "tui", "ubuntu", "server-management"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: System :: Monitoring",
+]
+dependencies = [
+    "urwid>=2.1.2",
+    "psutil>=5.9.5",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+docker = ["docker>=6.1.3"]
+k8s = ["kubernetes>=28.1.0"]
+all = ["docker>=6.1.3", "kubernetes>=28.1.0"]
+
+[project.scripts]
+vipe = "app.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/vipe-server-dashboard"
+Repository = "https://github.com/yourusername/vipe-server-dashboard"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+exclude = ["tests*"]
